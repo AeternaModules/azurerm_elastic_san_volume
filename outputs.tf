@@ -1,3 +1,7 @@
+output "elastic_san_volumes_id" {
+  description = "Map of id values across all elastic_san_volumes, keyed the same as var.elastic_san_volumes"
+  value       = { for k, v in azurerm_elastic_san_volume.elastic_san_volumes : k => v.id }
+}
 output "elastic_san_volumes_create_source" {
   description = "Map of create_source values across all elastic_san_volumes, keyed the same as var.elastic_san_volumes"
   value       = { for k, v in azurerm_elastic_san_volume.elastic_san_volumes : k => v.create_source }
