@@ -4,7 +4,7 @@ output "elastic_san_volumes_id" {
 }
 output "elastic_san_volumes_create_source" {
   description = "Map of create_source values across all elastic_san_volumes, keyed the same as var.elastic_san_volumes"
-  value       = { for k, v in azurerm_elastic_san_volume.elastic_san_volumes : k => v.create_source if v.create_source != null && length(v.create_source) > 0 }
+  value       = { for k, v in azurerm_elastic_san_volume.elastic_san_volumes : k => one(v.create_source) if v.create_source != null && length(v.create_source) > 0 }
 }
 output "elastic_san_volumes_name" {
   description = "Map of name values across all elastic_san_volumes, keyed the same as var.elastic_san_volumes"
